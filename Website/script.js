@@ -27,7 +27,21 @@ const direction = new MapboxDirections({
   profile: 'mapbox/driving'
 })
 
-direction.on('route', (event) => console.log(event))
+direction.on('route', (event) => {
+  var pointsArr = []
+  allSteps = event.route[0].legs[0].steps
+  stepsLen = event.route[0].legs[0].steps.length
+
+  for (let i = 0; i < stepsLen; i++) {
+    intersectionLen = allSteps[i].intersections.length
+    intersections = allSteps[i].intersections
+    for (let j = 0; j < intersectionLen; j++){
+      pointsArr.push([intersections[j].location[0],intersections[j].location[1]])
+    }
+  }
+  // Need to send pointsArr to backend
+  console.log(pointsArr)
+});
 
 map.addControl(
   direction
