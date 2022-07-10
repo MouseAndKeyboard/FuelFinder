@@ -42,7 +42,7 @@ direction.on('route', (event) => {
   // Need to send pointsArr to backend
   console.log(pointsArr)
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/servo", true);
+  xhr.open("POST", "http://localhost:8000/servo", true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
     path: pointsArr,
