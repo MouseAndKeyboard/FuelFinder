@@ -51,6 +51,22 @@ body {
   font-family: 'Magz', sans-serif;
 }
 
+.inputs {
+  position: absolute;
+  top: 175px;
+  left: 50px;
+  padding: 0;
+  margin: 0;
+  
+}
+
+::placeholder {
+  font-family: 'Magz', sans-serif;
+  font-size: small;
+  font-weight: bold;
+  padding-left: 0.5rem;
+}
+
 .fuel-discounts: {
 }
 
