@@ -19,14 +19,13 @@ map.addControl(
     showUserHeading: true,
   }),
   'bottom-right'
-)
+);
 
 const direction = new MapboxDirections({
   accessToken: mapboxgl.accessToken,
   unit: 'metric',
   profile: 'mapbox/driving',
-  coordinates: '{115.80513},{-31.979904};{115.826594},{-31.952633};{115.877596},{-31.963431}'
-})
+});
 
 direction.on('route', (event) => {
   var pointsArr = []
@@ -65,6 +64,6 @@ map.addControl(
   direction
 );
 
-func sendData(){
-
-}
+/* direction.addWaypoint (
+  1, [lng, lat]
+); */
