@@ -67,9 +67,6 @@ body {
   padding-left: 0.5rem;
 }
 
-.fuel-discounts: {
-}
-
 #btn {
   font-family: 'Magz', sans-serif;
   font-size: 2rem;
@@ -80,9 +77,23 @@ body {
   bottom: 0;
   left: 100px;
 }
+#btn2 {
+  font-family: 'Magz', sans-serif;
+  font-size: 2rem;
+  color: #88eeff;
+  background-color: transparent;
+  border-width: 0;
+  position: absolute;
+  bottom: 0;
+  left: 300px;
+}
 
 #btn:hover {
   color:aqua;
+}
+
+.hidden {
+  display: none;
 }
 
 #car {

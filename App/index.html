@@ -20,22 +20,23 @@
       <h1 id="logo">Fuel Finder</h1>
 
       <div class="fuel-discounts">
-          <input type="checkbox">RAC member
-          <input type="checkbox">Woolworths Rewards Program
+          <input type="checkbox" id="rac-member">RAC member
+          <input type="checkbox" id="woolworths-rewards-program">Woolworths Rewards Program
       </div>
 
       <div class="inputs">
-        <input type="text" placeholder="Fuel Efficiency">
-        <input type="number" placeholder="Tank After Fill">
-        <input type="number" placeholder="Current Tank">
+        <input type="text" placeholder="Fuel Efficiency" id="fuel-effiency">
+        <input type="number" placeholder="Tank After Fill" id="tank-after-fill">
+        <input type="number" placeholder="Current Tank" id="current-tank">
       </div>
     
       <div id="map"></div>
 
 
-      <button id="btn">Calculating...</button>
+      <button id="btn" onclick="getWaypoint()">Calculate</button>
+      <button id="btn2" onclick="removeWaypoint()">Reset</button>
 
-      <img id="car" src="./public/hotwheels-removebg-preview.png"/>
+      <img id="car" class="hidden" src="./public/hotwheels-removebg-preview.png"/>
 
       </div>
 
