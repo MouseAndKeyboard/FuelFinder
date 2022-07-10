@@ -43,6 +43,17 @@ body {
   }
 }
 
+.fuel-discounts {
+  color: white;
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  font-family: 'Magz', sans-serif;
+}
+
+.fuel-discounts: {
+}
+
 #btn {
   font-family: 'Magz', sans-serif;
   font-size: 2rem;
@@ -51,7 +62,7 @@ body {
   border-width: 0;
   position: absolute;
   bottom: 0;
-  left: 50px;
+  left: 100px;
 }
 
 #btn:hover {
