@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import urllib3
 from math import radians, cos, sin, asin, sqrt
 import xmltodict
@@ -85,6 +85,8 @@ def bestStation(startPos, endPos, stations, maxDiversion=5, km_per_l=16.5, desir
 
         total_cost = spent_at_servo + final_leg_cost
 
+        station.append((row['latitude'], row['longitude']))
+
         station.append(diversion)
 
         station.append(total_cost)
@@ -115,22 +117,23 @@ def getfuel_df():
 
 @csrf_exempt
 def index(request):
+    print(request)
     STATIONS = getfuel_df()
 
     if request.method == 'POST':
-        print(request.POST)
-        path = request.POST['path']
-        path = eval(path)
+        body = json.loads(request.body)
+        path = body['path']
         max_diversion = 5.0 # default
-        km_per_l = float(request.POST['efficiency'])
-        desired_tank = float(request.POST['capacity'])
-        current_tank = float(request.POST['current_tank'])
-        RAC_disc = bool(int(request.POST['RAC']))
-        Woolies_disc = bool(int(request.POST['Woolies']))
+        km_per_l = float(body['efficiency'])
+        desired_tank = float(body['capacity'])
+        current_tank = float(body['current_tank'])
+        RAC_disc = bool(int(body['RAC']))
+        Woolies_disc = bool(int(body['Woolies']))
         print(path, max_diversion, km_per_l, desired_tank, current_tank, RAC_disc, Woolies_disc)
         servo = get_best_servo(path, STATIONS, max_diversion, km_per_l, desired_tank, current_tank, RAC_disc, Woolies_disc)
-        return HttpResponse(json.dumps(servo))
+        print(servo)
+        return JsonResponse(servo, safe=False)
 
-    return HttpResponse('')
+    return JsonResponse({})
 
 # Create your views here.
