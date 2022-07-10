@@ -53,19 +53,19 @@ function getWaypoint(){
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
     path: pointsArr,
-    efficiency: 5,
-    capacity: 50,
-    current_tank: 2,
-    RAC: 0,
-    Woolies: 0
+    efficiency: document.querySelector('#fuel-effiency').value,
+    capacity: document.querySelector('#tank-after-fill').value,
+    current_tank: document.querySelector('#current-tank').value,
+    RAC: document.querySelector('#rac-member').value,
+    Woolies: document.querySelector('#woolworths-rewards-program').value,
   }));
   xhr.onload = function () {
     console.log("HELLO")
     console.log(this.responseText);
     var data = JSON.parse(this.responseText);
     console.log(data);
-    var latitude = data[1][0]
-    var longitude = data[1][1]
+    var latitude = data[3][0]
+    var longitude = data[3][1]
   direction.addWaypoint (
     1, [longitude,latitude])
   
