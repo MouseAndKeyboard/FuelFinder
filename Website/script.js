@@ -19,16 +19,20 @@ map.addControl(
     showUserHeading: true,
   }),
   'bottom-right'
-)
+);
 
 const direction = new MapboxDirections({
   accessToken: mapboxgl.accessToken,
   unit: 'metric',
-  profile: 'mapbox/driving'
-})
+  profile: 'mapbox/driving',
+});
 
 direction.on('route', (event) => console.log(event))
 
 map.addControl(
   direction
 );
+
+/* direction.addWaypoint (
+  1, [lng, lat]
+); */
