@@ -48,6 +48,8 @@ direction.on('route', (event) => {
 
 function getWaypoint(){
   document.getElementById('car').removeAttribute('class')
+  var RACdisct = document.querySelector('#rac-member').checked ? 0 : 1
+  var Wooliesdisct = document.querySelector('#woolworths-rewards-program').checked ? 0 : 1
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "http://localhost:8000/servo/", true);
   xhr.setRequestHeader('Content-Type', 'application/json');
@@ -56,8 +58,8 @@ function getWaypoint(){
     efficiency: document.querySelector('#fuel-effiency').value,
     capacity: document.querySelector('#tank-after-fill').value,
     current_tank: document.querySelector('#current-tank').value,
-    RAC: document.querySelector('#rac-member').value,
-    Woolies: document.querySelector('#woolworths-rewards-program').value,
+    RAC: RACdisct,
+    Woolies: Wooliesdisct,
   }));
   xhr.onload = function () {
     console.log("HELLO")
