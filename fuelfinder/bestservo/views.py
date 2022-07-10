@@ -85,11 +85,11 @@ def bestStation(startPos, endPos, stations, maxDiversion=5, km_per_l=16.5, desir
 
         total_cost = spent_at_servo + final_leg_cost
 
-        station.append((row['latitude'], row['longitude']))
-
         station.append(diversion)
 
         station.append(total_cost)
+
+        station.append((row['latitude'], row['longitude']))
 
         distances.append(station)
 
@@ -132,7 +132,8 @@ def index(request):
         print(path, max_diversion, km_per_l, desired_tank, current_tank, RAC_disc, Woolies_disc)
         servo = get_best_servo(path, STATIONS, max_diversion, km_per_l, desired_tank, current_tank, RAC_disc, Woolies_disc)
         print(servo)
-        return JsonResponse(servo, safe=False)
+        resp = JsonResponse(servo, safe=False)
+        return resp
 
     return JsonResponse({})
 
